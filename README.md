@@ -24,6 +24,9 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 │   └── TodoApp/                     # Mã nguồn dự án Todo Mini (State, List & Input)
 ├── Luyện Tập 4/
 │   └── BuiDuyThanh_LuyenTap4.docx   # Báo cáo bài tập Tuần 4
+├── Luyện Tập 5/
+│   ├── BuiDuyThanh_LuyenTap5.docx   # Báo cáo bài tập Tuần 5 (Lý thuyết & Thực hành)
+│   └── App.js                       # Mã nguồn ví dụ thực hành Hello React Native
 ├── Tài Liệu tuần/                   # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
@@ -107,3 +110,17 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 - [x] Ảnh chụp màn hình danh sách có ít nhất 3 item (được lưu tại `Luyện tập 2/screenshot_buoi2.png` và đính kèm trong báo cáo `BuiDuyThanh_LuyenTap2.docx`).
 - [x] Gắn thẻ Git tag: `buoi2`.
 
+---
+
+## 📱 Báo cáo Thực hành 5: Quy trình thiết kế, Kiến trúc luồng & Build trên thiết bị thật
+
+### 1. Mục tiêu bài học & thực hành
+- Nắm vững kiến trúc 3 luồng trong React Native: **Native thread**, **JavaScript thread** và **Shadow thread** (với Yoga Layout Engine).
+- Hiểu sâu luồng render giao diện: từ khai báo JSX (`View`, `Text`) đến ánh xạ thành các Native Component thực thụ trên Android (`ViewGroup`, `TextView`) và iOS (`UIView`, `UITextView`).
+- Hiểu rõ vai trò của **JSI** (JavaScript Interface) trong việc giao tiếp trực tiếp đồng bộ thay thế cho Bridge truyền thống.
+- Làm chủ quy trình chuẩn bị thiết bị Android thật để build ứng dụng (Developer Options, USB Debugging, ADB devices, màn hình mở khóa) và xử lý các lỗi thường gặp.
+- Nắm rõ sự khác biệt và điều kiện bắt buộc khi build trên Android so với iOS (Xcode, macOS, Apple ID).
+
+### 2. Sản phẩm hoàn thành trong Tuần 5
+- **Tài liệu báo cáo chi tiết:** `Luyện Tập 5/BuiDuyThanh_LuyenTap5.docx` (đầy đủ 5 câu hỏi ôn tập lý thuyết và 3 bài tập thực hành theo yêu cầu của giảng viên).
+- **Mã nguồn thực hành:** `Luyện Tập 5/App.js` (ví dụ giao diện chuẩn React Native hiển thị 'Hello React Native' sử dụng `View` và `Text`).
