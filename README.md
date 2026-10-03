@@ -27,6 +27,13 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 ├── Luyện Tập 5/
 │   ├── BuiDuyThanh_LuyenTap5.docx   # Báo cáo bài tập Tuần 5 (Lý thuyết & Thực hành)
 │   └── App.js                       # Mã nguồn ví dụ thực hành Hello React Native
+├── Luyện Tập 6/
+│   ├── BuiDuyThanh_LuyenTap6.docx   # Báo cáo lý thuyết và thực hành Tuần 6
+│   ├── components/
+│   │   ├── Greeting.js              # Bài 1: Functional Component Greeting (Props)
+│   │   ├── StudentInfo.js           # Bài 2: Component StudentInfo (Tái sử dụng hiển thị danh sách)
+│   │   └── CounterHook.js           # Bài 3: Component CounterHook (Quản lý state với useState)
+│   └── App.js                       # Màn hình chính tổng hợp các component Tuần 6
 ├── Tài Liệu tuần/                   # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
@@ -124,3 +131,21 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 ### 2. Sản phẩm hoàn thành trong Tuần 5
 - **Tài liệu báo cáo chi tiết:** `Luyện Tập 5/BuiDuyThanh_LuyenTap5.docx` (đầy đủ 5 câu hỏi ôn tập lý thuyết và 3 bài tập thực hành theo yêu cầu của giảng viên).
 - **Mã nguồn thực hành:** `Luyện Tập 5/App.js` (ví dụ giao diện chuẩn React Native hiển thị 'Hello React Native' sử dụng `View` và `Text`).
+
+---
+
+## 📱 Báo cáo Thực hành 6: Component & Hooks trong React Native
+
+### 1. Mục tiêu bài học & thực hành
+- Nắm vững khái niệm **Component** - khối xây dựng cơ bản của ứng dụng React Native với các đặc tính: độc lập (independent), tái sử dụng (reusable), và đóng gói (encapsulated).
+- Hiểu và phân biệt rõ sự khác nhau giữa **Functional Component** và **Class Component**, lý do Functional Component kết hợp Hooks trở thành xu hướng chuẩn hiện đại.
+- Làm chủ Hook cốt lõi **`useState`**: Quản lý trạng thái nội tại, hiểu luồng kích hoạt re-render giao diện khi state cập nhật so với biến thông thường.
+- Hiểu cơ chế hoạt động của **`useEffect`**: Xử lý các tác vụ phụ (side effects), vòng đời component, API fetching, subscriptions và cleanup function.
+- Rèn luyện kỹ năng chia nhỏ giao diện thành các Component độc lập, truyền và tái sử dụng dữ liệu thông qua **props**.
+
+### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 6/`)
+- [Greeting.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/components/Greeting.js): Functional component nhận prop `name` và render lời chào thân thiện.
+- [StudentInfo.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/components/StudentInfo.js): Component hiển thị thẻ thông tin sinh viên (Họ tên, Lớp, Ngành, Mã sinh viên) nhận qua `props`.
+- [CounterHook.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/components/CounterHook.js): Component sử dụng `useState` quản lý bộ đếm khởi tạo từ 0, nút bấm "Tăng" kích hoạt cập nhật state và re-render giao diện.
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/App.js): Màn hình chính tổng hợp cả 3 bài tập với giao diện phân khu trực quan, hiển thị thông tin sinh viên Bùi Duy Thành (MSV: 12523080).
+
