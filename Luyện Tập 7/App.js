@@ -193,7 +193,7 @@ const App = () => {
         <View style={styles.heroTagBadge}>
           <Text style={styles.heroTagText}>⚡ ƯU ĐÃI ĐẶC QUYỀN TUẦN 7</Text>
         </View>
-        <Text style={styles.heroTitle}>LỄ HỘI CÔNG NGHỆ 2026</Text>
+        <Text style={styles.heroTitle}>LỄ HỘI CÔNG NGHỆ TECH MART</Text>
         <Text style={styles.heroDesc}>
           Giảm tới 30% cho sinh viên khoa CNTT. Miễn phí vận chuyển toàn quốc.
         </Text>
