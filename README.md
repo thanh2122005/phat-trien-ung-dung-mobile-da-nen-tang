@@ -34,6 +34,14 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 │   │   ├── StudentInfo.js           # Bài 2: Component StudentInfo (Tái sử dụng hiển thị danh sách)
 │   │   └── CounterHook.js           # Bài 3: Component CounterHook (Quản lý state với useState)
 │   └── App.js                       # Màn hình chính tổng hợp các component Tuần 6
+├── Luyện Tập 7/
+│   ├── BuiDuyThanh_LuyenTap7.docx   # Báo cáo lý thuyết và thực hành Tuần 7
+│   ├── components/
+│   │   ├── LifecycleDemo.js         # Bài 1: Vòng đời Component (Mounting, Updating, Unmounting & Cleanup)
+│   │   ├── ControlledInput.js       # Bài 2: Controlled Component với TextInput, validation & preview
+│   │   ├── Avatar.js                # Bài 3a: Component con hiển thị ảnh đại diện bo tròn
+│   │   └── UserProfile.js           # Bài 3b: Component lồng Avatar và thông tin cá nhân
+│   └── App.js                       # Màn hình chính tổng hợp các chuyên đề Tuần 7
 ├── Tài Liệu tuần/                   # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
@@ -148,4 +156,29 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 - [StudentInfo.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/components/StudentInfo.js): Component hiển thị thẻ thông tin sinh viên (Họ tên, Lớp, Ngành, Mã sinh viên) nhận qua `props`.
 - [CounterHook.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/components/CounterHook.js): Component sử dụng `useState` quản lý bộ đếm khởi tạo từ 0, nút bấm "Tăng" kích hoạt cập nhật state và re-render giao diện.
 - [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%206/App.js): Màn hình chính tổng hợp cả 3 bài tập với giao diện phân khu trực quan, hiển thị thông tin sinh viên Bùi Duy Thành (MSV: 12523080).
+
+---
+
+## 📱 Báo cáo Thực hành 7: Vòng đời, Controlled Component & Lồng Component trong React Native
+
+### 1. Mục tiêu bài học & thực hành
+- Nắm vững **Vòng đời của Component (Lifecycle)** trong React Native:
+  - **Mounting (Gắn kết):** Khởi tạo component và gắn vào Virtual DOM; khởi chạy side-effects như timers, API calls với `useEffect(() => { ... }, [])`.
+  - **Updating (Cập nhật):** Re-render giao diện khi props/state thay đổi, theo dõi và xử lý dữ liệu qua `useEffect(() => { ... }, [dependencies])`.
+  - **Unmounting (Tháo gỡ):** Giải phóng tài nguyên, hủy timers/subscriptions thông qua **cleanup function** (`return () => { ... }`).
+- Hiểu và làm chủ **Controlled Component**:
+  - Dữ liệu của ô nhập liệu (`TextInput`) được kiểm soát và đồng bộ hai chiều trực tiếp bởi React `state`.
+  - Kiểm tra tính hợp lệ dữ liệu thời gian thực (real-time validation), chuẩn hóa ký tự, điều khiển nút xóa nội dung (Clear) và xem trước (live preview).
+- Thực hành kỹ thuật **Lồng Component (Nested Component)**:
+  - Chia nhỏ cấu trúc giao diện phức tạp thành các component chuyên trách độc lập.
+  - Xây dựng component con `Avatar` (hiển thị ảnh bo tròn, indicator trạng thái online) và nhúng vào component cha `UserProfile` (hiển thị danh thiếp sinh viên/chuyên viên).
+  - Quản lý luồng dữ liệu một chiều (Unidirectional Data Flow) thông qua việc truyền và tái sử dụng `props`.
+
+### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 7/`)
+- [LifecycleDemo.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/LifecycleDemo.js): Minh họa đầy đủ 3 giai đoạn Mounting, Updating và Unmounting; tích hợp timer đếm thời gian sống, nút kích hoạt re-render và hiển thị nhật ký vòng đời (lifecycle logs).
+- [ControlledInput.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/ControlledInput.js): Minh họa Controlled Component với ô nhập TextInput kết nối state, bộ đếm ký tự, validation tức thời, nút điền mẫu và nút xóa dữ liệu.
+- [Avatar.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/Avatar.js): Component con hiển thị ảnh đại diện bo tròn, hỗ trợ chữ cái đầu fallback và chấm tròn trạng thái online.
+- [UserProfile.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/UserProfile.js): Component lồng Avatar bên trong, nhận thông tin hồ sơ (họ tên, vai trò, mã sinh viên, email, tiểu sử) qua `props`.
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/App.js): Màn hình chính tổng hợp cả 3 chuyên đề với thiết kế phân khu hiện đại, có nút Toggle kiểm tra quá trình Unmounting và danh sách hồ sơ sinh viên Bùi Duy Thành (MSV: 12523080).
+- [BuiDuyThanh_LuyenTap7.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/BuiDuyThanh_LuyenTap7.docx): Tài liệu báo cáo hoàn chỉnh gồm đầy đủ câu hỏi ôn tập lý thuyết chuyên sâu và thuyết minh thực hành.
 
