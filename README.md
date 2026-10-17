@@ -48,6 +48,16 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 │   │   ├── Avatar.js                    # Component con Avatar
 │   │   └── UserProfile.js               # Component lồng Avatar
 │   └── App.js                           # Màn hình chính Clone UI Home Tech Mart Pro + Responsive
+├── Luyện Tập 8/
+│   ├── BuiDuyThanh_LuyenTap8.docx       # Báo cáo lý thuyết và thực hành Tuần 8
+│   ├── screenshot_register_invalid.png  # Ảnh minh chứng form chưa hợp lệ (hiển thị lỗi đỏ, disable nút submit)
+│   ├── screenshot_register_valid.png    # Ảnh minh chứng form hợp lệ (mở nút submit sẵn sàng)
+│   ├── components/
+│   │   ├── AppHeader.js                 # Component Header hiển thị tiêu đề và thông tin sinh viên
+│   │   ├── PrimaryButton.js             # Component nút bấm hỗ trợ trạng thái disabled
+│   │   ├── InputField.js                # Component ô nhập liệu nhận props và hiển thị lỗi validate đỏ
+│   │   └── Card.js                      # Component khung thẻ chứa nội dung tái sử dụng
+│   └── App.js                           # Màn hình Register hoàn chỉnh với form validation & state
 ├── Tài Liệu tuần/                       # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
@@ -211,4 +221,59 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 - [x] Kiểm tra thành công trên ít nhất 2 kích thước màn hình / xoay ngang dọc (`useWindowDimensions()`).
 - [x] Ảnh chụp màn hình minh chứng đầy đủ ([screenshot_buoi7.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/screenshot_buoi7.png) và [screenshot_buoi7_landscape.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/screenshot_buoi7_landscape.png)).
 - [x] Đã gắn thẻ Git tag: `buoi7`.
+
+---
+
+## 📱 Báo cáo Thực hành 8: Xây dựng bộ Component tái sử dụng & Form Register (Chương 3 – Lab 03)
+
+### 1. Nhiệm vụ thực hành & Mục tiêu bài học (Buổi 08)
+- **Tách 4 Component độc lập:** Xây dựng hệ thống component dùng chung trong thư mục `Luyện Tập 8/components/` gồm:
+  - [AppHeader.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/AppHeader.js): Component tiêu đề hiển thị tên màn hình, mô tả và thông tin sinh viên thực hiện.
+  - [PrimaryButton.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/PrimaryButton.js): Component nút bấm chính hỗ trợ trạng thái `disabled`, biến thể giao diện (`primary`, `secondary`).
+  - [InputField.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/InputField.js): Component ô nhập liệu nhận các props `label`, `value`, `onChangeText`, `placeholder`, `error`, hiển thị lỗi màu đỏ dưới ô nhập.
+  - [Card.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/Card.js): Component khung thẻ chứa nội dung tái sử dụng (hỗ trợ `children`, `title`, đổ bóng).
+- **Xây dựng màn hình Register:**
+  - 3 trường nhập liệu: Họ và tên (`name`), Địa chỉ email (`email`), Mật khẩu (`password`).
+- **Validation logic chặt chẽ:**
+  - Tên không được rỗng (độ dài tối thiểu 2 ký tự).
+  - Email không được rỗng và bắt buộc phải chứa ký tự `@` (chuẩn định dạng email).
+  - Mật khẩu có độ dài tối thiểu từ 6 ký tự.
+- **Phản hồi giao diện thời gian thực:**
+  - Viền ô nhập và thông báo lỗi hiển thị màu đỏ ngay dưới ô nhập khi chưa đạt chuẩn.
+  - Vô hiệu hóa (Disable) nút Submit khi form chưa hợp lệ.
+  - Mở kích hoạt nút Submit khi toàn bộ thông tin hợp lệ.
+- **Tiêu chuẩn kiểm tra:**
+  - Import/Export đúng (Named export & Default export).
+  - Không lỗi màn hình trắng.
+  - Mỗi component được tái sử dụng ít nhất 2 lần.
+
+### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 8/`)
+- [AppHeader.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/AppHeader.js): Header nhận props định danh sinh viên Bùi Duy Thành (MSV: 12523080).
+- [PrimaryButton.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/PrimaryButton.js): Nút bấm tái sử dụng cho Submit và Reset form.
+- [InputField.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/InputField.js): Tái sử dụng cho cả 3 trường nhập Tên, Email và Mật khẩu.
+- [Card.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/components/Card.js): Tái sử dụng cho Thẻ biểu mẫu đăng ký và Thẻ danh sách tài khoản.
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/App.js): Màn hình chính kết hợp toàn bộ hệ thống component và logic validation.
+- [BuiDuyThanh_LuyenTap8.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/BuiDuyThanh_LuyenTap8.docx): Tài liệu báo cáo hoàn chỉnh gồm 8 câu hỏi lý thuyết mục 3.9 và Phiếu thực hành mẫu 04.
+
+### 3. Kết quả thực nghiệm kiểm thử tính năng
+
+<div align="center">
+  <img src="./Luyện Tập 8/screenshot_register_invalid.png" alt="Trạng thái form chưa hợp lệ" width="320" />
+  <p><i>Hình 1: Trạng thái chưa hợp lệ (Báo lỗi đỏ dưới từng ô nhập và nút Submit bị vô hiệu hóa)</i></p>
+  <br/>
+  <img src="./Luyện Tập 8/screenshot_register_valid.png" alt="Trạng thái form hợp lệ" width="320" />
+  <p><i>Hình 2: Trạng thái hợp lệ (Các trường kiểm tra đạt chuẩn, nút Submit kích hoạt sẵn sàng)</i></p>
+</div>
+
+---
+
+### 4. Checklist nộp bài
+- [x] Tạo thư mục `Luyện Tập 8/components/` và tách đủ 4 component: `AppHeader`, `PrimaryButton`, `InputField`, `Card`.
+- [x] Xây dựng form Register với 3 trường: tên, email, mật khẩu.
+- [x] Truyền props đầy đủ vào `InputField`: `label`, `value`, `onChangeText`, `placeholder`, `error`.
+- [x] Quản lý state cho form và state lỗi validate.
+- [x] Disable nút Submit khi form chưa hợp lệ và hiển thị lỗi màu đỏ dưới ô nhập.
+- [x] Mỗi component được tái sử dụng ít nhất 2 lần, import/export chuẩn, không lỗi màn hình trắng.
+- [x] Ảnh chụp màn hình minh chứng đầy đủ ([screenshot_register_invalid.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/screenshot_register_invalid.png) và [screenshot_register_valid.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/screenshot_register_valid.png)).
+- [x] File báo cáo lý thuyết & thực hành: [BuiDuyThanh_LuyenTap8.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/BuiDuyThanh_LuyenTap8.docx) (không ghi ngày làm).
 
