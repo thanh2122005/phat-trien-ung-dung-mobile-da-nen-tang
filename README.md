@@ -35,14 +35,20 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 │   │   └── CounterHook.js           # Bài 3: Component CounterHook (Quản lý state với useState)
 │   └── App.js                       # Màn hình chính tổng hợp các component Tuần 6
 ├── Luyện Tập 7/
-│   ├── BuiDuyThanh_LuyenTap7.docx   # Báo cáo lý thuyết và thực hành Tuần 7
+│   ├── BuiDuyThanh_LuyenTap7.docx       # Báo cáo lý thuyết và thực hành Tuần 7
+│   ├── screenshot_buoi7.png             # Ảnh chụp màn hình chế độ dọc (Portrait 1 cột)
+│   ├── screenshot_buoi7_landscape.png   # Ảnh chụp màn hình chế độ ngang (Landscape 2 cột)
 │   ├── components/
-│   │   ├── LifecycleDemo.js         # Bài 1: Vòng đời Component (Mounting, Updating, Unmounting & Cleanup)
-│   │   ├── ControlledInput.js       # Bài 2: Controlled Component với TextInput, validation & preview
-│   │   ├── Avatar.js                # Bài 3a: Component con hiển thị ảnh đại diện bo tròn
-│   │   └── UserProfile.js           # Bài 3b: Component lồng Avatar và thông tin cá nhân
-│   └── App.js                       # Màn hình chính tổng hợp các chuyên đề Tuần 7
-├── Tài Liệu tuần/                   # Tài liệu học tập và slide bài giảng
+│   │   ├── FixedHeader.js               # Header cố định bằng position absolute
+│   │   ├── SearchBar.js                 # Controlled Component tìm kiếm real-time
+│   │   ├── CategoryFilter.js            # Thanh lọc danh mục sản phẩm ngang
+│   │   ├── ProductCard.js               # Component renderItem tách riêng cho FlatList
+│   │   ├── LifecycleDemo.js             # Vòng đời Component (useEffect & Cleanup)
+│   │   ├── ControlledInput.js           # Controlled Component thực hành
+│   │   ├── Avatar.js                    # Component con Avatar
+│   │   └── UserProfile.js               # Component lồng Avatar
+│   └── App.js                           # Màn hình chính Clone UI Home Tech Mart Pro + Responsive
+├── Tài Liệu tuần/                       # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
 
@@ -159,26 +165,50 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 
 ---
 
-## 📱 Báo cáo Thực hành 7: Vòng đời, Controlled Component & Lồng Component trong React Native
+## 📱 Báo cáo Thực hành 7: Clone UI mẫu, Vòng đời, Controlled Component & Responsive FlatList
 
-### 1. Mục tiêu bài học & thực hành
-- Nắm vững **Vòng đời của Component (Lifecycle)** trong React Native:
-  - **Mounting (Gắn kết):** Khởi tạo component và gắn vào Virtual DOM; khởi chạy side-effects như timers, API calls với `useEffect(() => { ... }, [])`.
-  - **Updating (Cập nhật):** Re-render giao diện khi props/state thay đổi, theo dõi và xử lý dữ liệu qua `useEffect(() => { ... }, [dependencies])`.
-  - **Unmounting (Tháo gỡ):** Giải phóng tài nguyên, hủy timers/subscriptions thông qua **cleanup function** (`return () => { ... }`).
-- Hiểu và làm chủ **Controlled Component**:
-  - Dữ liệu của ô nhập liệu (`TextInput`) được kiểm soát và đồng bộ hai chiều trực tiếp bởi React `state`.
-  - Kiểm tra tính hợp lệ dữ liệu thời gian thực (real-time validation), chuẩn hóa ký tự, điều khiển nút xóa nội dung (Clear) và xem trước (live preview).
-- Thực hành kỹ thuật **Lồng Component (Nested Component)**:
-  - Chia nhỏ cấu trúc giao diện phức tạp thành các component chuyên trách độc lập.
-  - Xây dựng component con `Avatar` (hiển thị ảnh bo tròn, indicator trạng thái online) và nhúng vào component cha `UserProfile` (hiển thị danh thiếp sinh viên/chuyên viên).
-  - Quản lý luồng dữ liệu một chiều (Unidirectional Data Flow) thông qua việc truyền và tái sử dụng `props`.
+### 1. Nhiệm vụ thực hành & Mục tiêu bài học (Buổi 07)
+- **Clone UI mẫu Home E-commerce:** Xây dựng màn hình Home phong cách Tech Mart Pro với spacing (khoảng cách padding, margin, gap 8/12/16) rõ ràng, chuẩn UI/UX hiện đại.
+- **Áp dụng `SafeAreaView`:** Bảo vệ nội dung không bị che khuất bởi tai thỏ (notch), camera nốt ruồi hay thanh trạng thái trên thiết bị di động.
+- **Tạo Header cố định:** Sử dụng component [FixedHeader.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/FixedHeader.js) với thuộc tính `position: 'absolute'`, `zIndex: 100` luôn nổi trên đầu giao diện.
+- **Tối ưu FlatList:**
+  - Sử dụng `keyExtractor={(item) => item.id.toString()}` cam kết **không warning key**.
+  - Tách `renderItem` thành component [ProductCard.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/ProductCard.js) độc lập.
+  - Sử dụng `ListHeaderComponent`, `ListEmptyComponent`, `ListFooterComponent` để phân tách logic và tối ưu hiệu năng render.
+- **Kiểm tra Responsive trên 2 kích thước màn hình / xoay ngang dọc:**
+  - Sử dụng hook `useWindowDimensions()` tự động điều chỉnh số cột: **1 cột** khi xem dọc (Portrait, width < 600) và **2 cột** khi xem ngang (Landscape, width >= 600).
+  - Tích hợp nút chuyển nhanh chế độ xem ngay trên giao diện để kiểm thử tức thì.
+- **Tích hợp kiến thức Vòng đời & Controlled Component:**
+  - [SearchBar.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/SearchBar.js): Controlled Component quản lý tìm kiếm thời gian thực với nút Clear.
+  - `useEffect`: Quản lý Vòng đời (Mounting giả lập tải dữ liệu, Updating lọc sản phẩm, Unmounting dọn dẹp).
 
 ### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 7/`)
-- [LifecycleDemo.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/LifecycleDemo.js): Minh họa đầy đủ 3 giai đoạn Mounting, Updating và Unmounting; tích hợp timer đếm thời gian sống, nút kích hoạt re-render và hiển thị nhật ký vòng đời (lifecycle logs).
-- [ControlledInput.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/ControlledInput.js): Minh họa Controlled Component với ô nhập TextInput kết nối state, bộ đếm ký tự, validation tức thời, nút điền mẫu và nút xóa dữ liệu.
-- [Avatar.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/Avatar.js): Component con hiển thị ảnh đại diện bo tròn, hỗ trợ chữ cái đầu fallback và chấm tròn trạng thái online.
-- [UserProfile.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/UserProfile.js): Component lồng Avatar bên trong, nhận thông tin hồ sơ (họ tên, vai trò, mã sinh viên, email, tiểu sử) qua `props`.
-- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/App.js): Màn hình chính tổng hợp cả 3 chuyên đề với thiết kế phân khu hiện đại, có nút Toggle kiểm tra quá trình Unmounting và danh sách hồ sơ sinh viên Bùi Duy Thành (MSV: 12523080).
-- [BuiDuyThanh_LuyenTap7.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/BuiDuyThanh_LuyenTap7.docx): Tài liệu báo cáo hoàn chỉnh gồm đầy đủ câu hỏi ôn tập lý thuyết chuyên sâu và thuyết minh thực hành.
+- [FixedHeader.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/FixedHeader.js): Header cố định bằng position absolute, hiển thị logo, chuông thông báo và thông tin sinh viên Bùi Duy Thành (MSV: 12523080).
+- [SearchBar.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/SearchBar.js): Ô tìm kiếm Controlled Component lọc sản phẩm thời gian thực, có nút xóa nhanh.
+- [CategoryFilter.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/CategoryFilter.js): Thanh lọc danh mục ngang dạng cuộn mượt mà.
+- [ProductCard.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/ProductCard.js): Component renderItem tách riêng của FlatList, cardWidth co giãn tự động theo Responsive.
+- [LifecycleDemo.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/components/LifecycleDemo.js): Minh họa chuyên sâu 3 giai đoạn Vòng đời Component (Mounting, Updating, Unmounting & Cleanup).
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/App.js): Màn hình Home tổng hợp hoàn chỉnh, kết hợp FlatList tối ưu và nút kiểm thử Responsive.
+- [BuiDuyThanh_LuyenTap7.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/BuiDuyThanh_LuyenTap7.docx): Tài liệu báo cáo hoàn chỉnh gồm lý thuyết, thuyết minh bài thực hành và bảng đối chiếu tiêu chí.
+
+### 3. Kết quả thực nghiệm trên 2 kích thước màn hình (Responsive)
+
+<div align="center">
+  <img src="./Luyện Tập 7/screenshot_buoi7.png" alt="Chế độ dọc (Portrait 1 cột)" width="320" />
+  <p><i>Hình 1: Giao diện chế độ dọc (Portrait 1 cột) với Fixed Header, SearchBar và FlatList tối ưu</i></p>
+  <br/>
+  <img src="./Luyện Tập 7/screenshot_buoi7_landscape.png" alt="Chế độ xoay ngang (Landscape 2 cột)" width="640" />
+  <p><i>Hình 2: Giao diện xoay ngang (Landscape 2 cột) chứng minh tính Responsive linh hoạt tự động</i></p>
+</div>
+
+---
+
+### 4. Checklist nộp bài
+- [x] Chọn màn hình Home và clone UI theo spacing rõ ràng, chuẩn phong cách E-commerce.
+- [x] Áp dụng `SafeAreaView` chống che lấp bởi tai thỏ / status bar.
+- [x] Tạo Header cố định bằng `position: 'absolute'`.
+- [x] Tối ưu `FlatList` với `keyExtractor` duy nhất (không warning key) và `renderItem` tách thành component `ProductCard.js`.
+- [x] Kiểm tra thành công trên ít nhất 2 kích thước màn hình / xoay ngang dọc (`useWindowDimensions()`).
+- [x] Ảnh chụp màn hình minh chứng đầy đủ ([screenshot_buoi7.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/screenshot_buoi7.png) và [screenshot_buoi7_landscape.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%207/screenshot_buoi7_landscape.png)).
+- [x] Đã gắn thẻ Git tag: `buoi7`.
 
