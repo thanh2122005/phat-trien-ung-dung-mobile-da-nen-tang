@@ -58,6 +58,18 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 │   │   ├── InputField.js                # Component ô nhập liệu nhận props và hiển thị lỗi validate đỏ
 │   │   └── Card.js                      # Component khung thẻ chứa nội dung tái sử dụng
 │   └── App.js                           # Màn hình Register hoàn chỉnh với form validation & state
+├── Luyện Tập 9/
+│   ├── BuiDuyThanh_LuyenTap9.docx       # Báo cáo lý thuyết và thực hành Tuần 9
+│   ├── screenshot_login.png             # Ảnh minh chứng màn hình Login (Bài tập 1)
+│   ├── screenshot_profile_settings_small.png # Ảnh Profile & Settings trên màn hình nhỏ (Phone - Layout Dọc)
+│   ├── screenshot_profile_settings_large.png # Ảnh Profile & Settings trên màn hình lớn (Tablet - 2 Cột)
+│   ├── theme.js                         # Hệ thống Design Tokens (Colors, Spacing, Typography, Shadows)
+│   ├── components/
+│   │   ├── CustomButton.js              # Nút bấm dùng chung hỗ trợ style & textStyle props
+│   │   ├── LoginView.js                 # Màn hình Login (Bài tập 1 - StyleSheet.create)
+│   │   ├── ProfileCard.js               # Thẻ Profile sinh viên & thông số (Flexbox row/col)
+│   │   └── SettingsList.js              # Danh sách Settings nhóm với Switch tương tác
+│   └── App.js                           # Màn hình tổng hợp kiểm thử Responsive & chuyển tab
 ├── Tài Liệu tuần/                       # Tài liệu học tập và slide bài giảng
 └── README.md
 ```
@@ -276,4 +288,60 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 - [x] Mỗi component được tái sử dụng ít nhất 2 lần, import/export chuẩn, không lỗi màn hình trắng.
 - [x] Ảnh chụp màn hình minh chứng đầy đủ ([screenshot_register_invalid.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/screenshot_register_invalid.png) và [screenshot_register_valid.png](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/screenshot_register_valid.png)).
 - [x] File báo cáo lý thuyết & thực hành: [BuiDuyThanh_LuyenTap8.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%208/BuiDuyThanh_LuyenTap8.docx) (không ghi ngày làm).
+
+---
+
+## 📱 Báo cáo Thực hành 9: Thiết kế giao diện với StyleSheet & Flexbox Layout (Chương 4 – Lab 04)
+
+### 1. Nhiệm vụ thực hành & Mục tiêu bài học (Buổi 09)
+- **A. Câu hỏi ôn tập lý thuyết:**
+  - **Câu 1:** Phân tích vai trò của `StyleSheet` trong React Native và lý do ưu tiên sử dụng `StyleSheet.create()` thay vì viết inline style trong các dự án thực tế (Performance, ID Caching, Compile-time validation, Separation of concerns).
+  - **Câu 2:** Giải thích cách sử dụng prop `style` và cơ chế ghi đè thuộc tính khi truyền mảng style (Nguyên tắc Last-wins & Property merging).
+  - **Câu 3:** Ý nghĩa của việc export/import StyleSheet và xác định thời điểm nên tách style ra file riêng (`theme.js`, module UI dùng chung).
+  - **Câu 4:** Kỹ thuật truyền style qua props cho component con; sự linh hoạt khi truyền `style` và `textStyle` vào `CustomButton`.
+  - **Câu 5:** Phân tích vai trò của Flexbox trong thiết kế giao diện di động đa kích thước; ý nghĩa chi tiết của 5 thuộc tính cốt lõi: `flexDirection`, `justifyContent`, `alignItems`, `flex`, `flexWrap`.
+- **B. Bài tập luyện tập thực hành:**
+  - **Bài tập 1 (Mức dễ):** Thiết kế màn hình **Login** hoàn chỉnh gồm tiêu đề ứng dụng, 2 ô nhập thông tin (Email, Mật khẩu), nút đăng nhập (`CustomButton`), liên kết "Forgot password?". Toàn bộ style được định nghĩa bằng `StyleSheet.create()` với đầy đủ các thuộc tính `backgroundColor`, `fontSize`, `fontWeight`, `padding`, `margin`, `borderWidth`, `borderRadius`, `justifyContent`, `alignItems`.
+  - **Bài tập 2 (Mức trung bình):** Xây dựng giao diện **Profile Card** (Avatar sinh viên Bùi Duy Thành - MSV 12523080, Pro Badge, thống kê 3 cột) + **Settings List** (Nhóm tài khoản & ứng dụng, Switch tương tác bật/tắt).
+  - **Yêu cầu Responsive đa thiết bị:** Tự động thích ứng kích thước màn hình:
+    - *Màn hình nhỏ (Phone đứng):* Xếp chồng dọc (`flexDirection: 'column'`).
+    - *Màn hình lớn (Tablet / Ngang):* Chia 2 cột song song (`flexDirection: 'row'`).
+
+### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 9/`)
+- [theme.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/theme.js): Hệ thống Design Tokens tập trung gồm bảng màu `colors`, `spacing`, `typography`, `borderRadius`, và `shadows`.
+- [CustomButton.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/components/CustomButton.js): Nút bấm dùng chung nhận `style` (container) và `textStyle` (nhãn chữ), minh họa chuẩn mực câu hỏi lý thuyết 4.
+- [LoginView.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/components/LoginView.js): Màn hình đăng nhập đầy đủ các thành phần và 100% sử dụng `StyleSheet.create()`.
+- [ProfileCard.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/components/ProfileCard.js): Thẻ hồ sơ cá nhân sinh viên Bùi Duy Thành - MSV: 12523080 với bố cục Flexbox hàng ngang/hàng dọc lồng nhau.
+- [SettingsList.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/components/SettingsList.js): Danh sách cài đặt phân nhóm trực quan với các công tắc Switch tương tác thời gian thực.
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/App.js): Ứng dụng tích hợp có thanh Tab chuyển đổi Bài tập 1 & Bài tập 2 kèm nút kích hoạt Responsive Emulator.
+- [BuiDuyThanh_LuyenTap9.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/BuiDuyThanh_LuyenTap9.docx): Báo cáo học tập hoàn chỉnh gồm trả lời 5 câu hỏi lý thuyết, thuyết minh kỹ thuật và đính kèm 3 ảnh kết quả thực nghiệm.
+
+### 3. Kết quả thực nghiệm minh chứng giao diện
+
+<div align="center">
+  <img src="./Luyện Tập 9/screenshot_login.png" alt="Giao diện màn hình Login (Bài tập 1)" width="320" />
+  <p><i>Hình 1: Giao diện màn hình Login đơn giản chuẩn StyleSheet.create() (Bài tập 1 - Mức dễ)</i></p>
+  <br/>
+  <img src="./Luyện Tập 9/screenshot_profile_settings_small.png" alt="Profile Card & Settings List trên màn hình nhỏ" width="320" />
+  <p><i>Hình 2: Giao diện Profile Card + Settings List trên màn hình nhỏ (Phone - Layout Dọc 1 cột)</i></p>
+  <br/>
+  <img src="./Luyện Tập 9/screenshot_profile_settings_large.png" alt="Profile Card & Settings List trên màn hình lớn" width="640" />
+  <p><i>Hình 3: Giao diện Profile Card + Settings List trên màn hình lớn (Tablet / Màn hình ngang - Layout 2 cột)</i></p>
+</div>
+
+---
+
+### 4. Checklist nộp bài
+- [x] Trả lời đầy đủ và chi tiết 5 câu hỏi ôn tập lý thuyết về StyleSheet, prop style cascade, export/import theme, truyền style qua props cho child component và các thuộc tính Flexbox cốt lõi.
+- [x] Bài tập 1 (Mức dễ): Màn hình Login đầy đủ tiêu đề, 2 ô nhập liệu (Email, Mật khẩu), nút đăng nhập `CustomButton`, và dòng chữ "Forgot password?".
+- [x] Bài tập 1 sử dụng 100% `StyleSheet.create()`, áp dụng đầy đủ các thuộc tính: `backgroundColor`, `fontSize`, `fontWeight`, `padding`, `margin`, `borderWidth`, `borderRadius`, `justifyContent`, `alignItems`.
+- [x] Bài tập 2 (Mức trung bình): Clone giao diện Profile Card (thông tin cá nhân sinh viên Bùi Duy Thành, MSV: 12523080) và Settings List (phân nhóm cài đặt, Switch tương tác).
+- [x] Thiết kế Responsive: Tự động chuyển đổi giữa layout 1 cột (điện thoại nhỏ) và layout 2 cột (màn hình lớn / tablet).
+- [x] Đầy đủ 3 hình ảnh minh chứng chụp từ giao diện:
+  - `screenshot_login.png`: Màn hình Login.
+  - `screenshot_profile_settings_small.png`: Profile Card & Settings List màn hình nhỏ.
+  - `screenshot_profile_settings_large.png`: Profile Card & Settings List màn hình lớn.
+- [x] File tài liệu báo cáo: [BuiDuyThanh_LuyenTap9.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%209/BuiDuyThanh_LuyenTap9.docx) (không ghi ngày làm theo yêu cầu).
+- [x] Đã gắn thẻ Git tag: `buoi9`.
+
 
