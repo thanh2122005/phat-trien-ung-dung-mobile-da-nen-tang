@@ -345,3 +345,69 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
 - [x] Đã gắn thẻ Git tag: `buoi9`.
 
 
+
+
+---
+
+## 🚀 Báo cáo Thực hành 10: Tích hợp REST API, Thiết bị ngoại vi & Bộ nhớ AsyncStorage (Chương 5 – Lab 05)
+
+### 1. Nhiệm vụ thực hành & Mục tiêu bài học (Buổi 10)
+- **A. Câu hỏi ôn tập lý thuyết:**
+  - **Câu 1:** Khái niệm API & REST API trong ứng dụng di động; ví dụ trong React Native gọi API lấy dữ liệu máy chủ (Fetch API, async/await, HTTP status, JSON parsing).
+  - **Câu 2:** Phân biệt phương thức `GET` và `POST` khi làm việc với API (Mục đích, Query String vs Request Body, Caching, Security, Idempotent); Hướng dẫn khi nào dùng GET, khi nào dùng POST trong ứng dụng di động.
+  - **Câu 3:** Vai trò của Geolocation; Phân tích các vấn đề quyền truy cập (`PermissionsAndroid`, runtime permissions) và quyền riêng tư (Foreground vs Background Location, Fine vs Coarse Location, tính minh bạch).
+  - **Câu 4:** Vai trò của Image Picker trong ứng dụng di động; Phân tích sự khác biệt kỹ thuật và trải nghiệm người dùng giữa chọn ảnh từ thư viện (`launchImageLibraryAsync`) và chụp ảnh bằng camera (`launchCameraAsync`).
+  - **Câu 5:** Bản chất của `AsyncStorage` và vai trò lưu trữ dữ liệu cục bộ (Key-Value offline persistence); Trình bày chi tiết 4 thao tác cơ bản (`setItem`, `getItem`, `removeItem`, `clear`) và ví dụ thực tế (lưu trữ token, user profile, settings).
+- **B. Bài tập luyện tập thực hành:**
+  - **Bài tập 1 (Mức dễ):** Gọi public API `https://jsonplaceholder.typicode.com/posts`, hiển thị danh sách bài viết bằng `FlatList` (Mã bài viết #ID, Tác giả User ID, Tiêu đề title, Trích dẫn body), xử lý toàn diện loading state (`ActivityIndicator`), error state (thông báo lỗi trực quan + nút retry "Thử lại kết nối API"), kéo để làm mới (`RefreshControl`), thanh tìm kiếm thời gian thực (`SearchFilter`), và đánh dấu bài viết yêu thích lưu vào `AsyncStorage`.
+  - **Bài tập 2 (Mức trung bình):** Xây dựng ứng dụng Mini tích hợp tài nguyên thiết bị:
+    - *Image Picker:* Chọn ảnh đại diện từ thư viện ảnh hoặc chụp ảnh từ máy ảnh camera.
+    - *Geolocation:* Thu thập tọa độ GPS thời gian thực (Kinh độ, Vĩ độ, Bán kính sai số, Địa chỉ).
+    - *Form nhập liệu:* Họ tên sinh viên (Bùi Duy Thành - MSV 12523080), Ghi chú chuyên ngành, Switch trạng thái "Đã đăng nhập".
+    - *AsyncStorage Persistence:* Đóng gói cấu trúc dữ liệu JSON lưu trữ bền vững với khóa `@thoitranghd_user_profile`.
+    - *Màn hình Saved Data:* Tự động đọc và hiển thị lại toàn bộ hồ sơ, tọa độ, và dữ liệu JSON raw; hỗ trợ nút tải lại và nút xóa sạch bộ nhớ.
+
+### 2. Cấu trúc mã nguồn thực hành (Thư mục `Luyện Tập 10/`)
+- [theme.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/theme.js): Bảng quy chuẩn Design Tokens tập trung (`colors`, `typography`, `spacing`, `borderRadius`, `shadows`).
+- [CustomButton.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/components/CustomButton.js): Nút bấm đa năng hỗ trợ các biến thể `primary`, `secondary`, `outline`, `danger`, `success`, `disabled`, và `loading`.
+- [PostItem.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/components/PostItem.js): Thẻ hiển thị bài viết tối ưu cho FlatList với huy hiệu ID, title in đậm, body tóm tắt, nút chi tiết và nút toggle sao yêu thích.
+- [ApiPostsView.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/components/ApiPostsView.js): Màn hình Bài tập 1 hoàn chỉnh kết nối REST API JSONPlaceholder, xử lý loading/error/retry, pull-to-refresh, modal xem chi tiết, và tìm kiếm.
+- [DeviceDataForm.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/components/DeviceDataForm.js): Màn hình form nhập liệu tích hợp Image Picker (Thư viện & Camera), Geolocation (GPS), Switch đăng nhập và lưu vào AsyncStorage.
+- [SavedDataView.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/components/SavedDataView.js): Màn hình Bài tập 2 đọc lại dữ liệu đã lưu từ AsyncStorage, hiển thị hồ sơ sinh viên, tọa độ GPS và raw JSON inspector.
+- [App.js](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/App.js): Ứng dụng tích hợp với thanh điều hướng 3 Tab: "Bài 1: REST API", "Bài 2: Thiết Bị", và "Bài 2: Đã Lưu".
+- [BuiDuyThanh_LuyenTap10.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/BuiDuyThanh_LuyenTap10.docx): Báo cáo thực hành chính thức đầy đủ 5 câu hỏi lý thuyết, thuyết minh kỹ thuật, bảng đối chiếu và 4 ảnh minh chứng thực nghiệm.
+
+### 3. Kết quả thực nghiệm minh chứng giao diện
+
+<div align="center">
+  <img src="./Luyện Tập 10/screenshot_bai1_api_posts.png" alt="Giao diện danh sách bài viết từ REST API (Bài tập 1)" width="320" />
+  <p><i>Hình 1: Giao diện danh sách bài viết từ REST API JSONPlaceholder với FlatList, Tìm kiếm và Yêu thích (Bài tập 1)</i></p>
+  <br/>
+  <img src="./Luyện Tập 10/screenshot_bai1_loading_error.png" alt="Xử lý Loading và Lỗi mạng kèm nút Retry" width="320" />
+  <p><i>Hình 2: Trạng thái Loading (ActivityIndicator), Xử lý lỗi mạng kèm nút Retry và Modal xem chi tiết bài viết (Bài tập 1)</i></p>
+  <br/>
+  <img src="./Luyện Tập 10/screenshot_bai2_form_device.png" alt="Form thu thập thông tin thiết bị (Bài tập 2)" width="320" />
+  <p><i>Hình 3: Form nhập liệu tích hợp Image Picker (Avatar), Geolocation (GPS) và Switch lưu vào AsyncStorage (Bài tập 2)</i></p>
+  <br/>
+  <img src="./Luyện Tập 10/screenshot_bai2_saved_data.png" alt="Màn hình hiển thị dữ liệu đã lưu từ AsyncStorage" width="320" />
+  <p><i>Hình 4: Màn hình đọc dữ liệu từ AsyncStorage (@thoitranghd_user_profile) hiển thị hồ sơ, GPS và Raw JSON (Bài tập 2)</i></p>
+</div>
+
+---
+
+### 4. Checklist nộp bài Buổi 10
+- [x] Trả lời đầy đủ, chi tiết và chuyên sâu 5 câu hỏi ôn tập lý thuyết Chương 5 (Khái niệm REST API, phân biệt GET vs POST, Geolocation & quyền riêng tư, Image Picker Camera vs Library, 4 thao tác AsyncStorage).
+- [x] Bài tập 1 (Mức dễ): Gọi public API `https://jsonplaceholder.typicode.com/posts`, hiển thị danh sách bài viết mượt mà bằng `FlatList`.
+- [x] Xử lý trạng thái đang tải (Loading state với `ActivityIndicator`).
+- [x] Xử lý trạng thái lỗi kết nối (Error state trực quan màu đỏ + nút bấm Retry kích hoạt gọi lại API).
+- [x] Tích hợp Pull-to-refresh (`RefreshControl`) và thanh tìm kiếm thời gian thực (`SearchFilter`).
+- [x] Bài tập 2 (Mức trung bình): Ứng dụng Mini tích hợp Image Picker (Thư viện/Camera), Geolocation (GPS), Form thông tin sinh viên Bùi Duy Thành (MSV 12523080).
+- [x] Lưu trữ cấu trúc dữ liệu đầy đủ vào `AsyncStorage` (`@thoitranghd_user_profile`).
+- [x] Màn hình "Saved Data" đọc lại dữ liệu thành công từ AsyncStorage và hiển thị trực quan.
+- [x] Đầy đủ 4 hình ảnh minh chứng chụp từ giao diện hoàn chỉnh:
+  - `screenshot_bai1_api_posts.png`: Danh sách bài viết REST API FlatList.
+  - `screenshot_bai1_loading_error.png`: Xử lý Loading, Error State kèm Retry và Modal chi tiết.
+  - `screenshot_bai2_form_device.png`: Form thu thập Image Picker, Geolocation và AsyncStorage.
+  - `screenshot_bai2_saved_data.png`: Màn hình đọc dữ liệu đã lưu từ AsyncStorage.
+- [x] File tài liệu báo cáo chính thức: [BuiDuyThanh_LuyenTap10.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/BuiDuyThanh_LuyenTap10.docx) (không ghi ngày làm theo đúng quy định).
+- [x] Đã gắn thẻ Git tag: `buoi10`.
