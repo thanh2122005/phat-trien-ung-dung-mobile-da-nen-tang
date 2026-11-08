@@ -411,3 +411,59 @@ Repository này được tổ chức theo từng tuần học và nội dung bà
   - `screenshot_bai2_saved_data.png`: Màn hình đọc dữ liệu đã lưu từ AsyncStorage.
 - [x] File tài liệu báo cáo chính thức: [BuiDuyThanh_LuyenTap10.docx](file:///d:/Source%20mobile%202/Luyện%20tập%201/Luyện%20Tập%2010/BuiDuyThanh_LuyenTap10.docx) (không ghi ngày làm theo đúng quy định).
 - [x] Đã gắn thẻ Git tag: `buoi10`.
+
+
+---
+
+## 🏆 TỔNG KẾT HỌC PHẦN: BỘ KỊCH BẢN KIỂM THỬ (TEST CASES) DỰ ÁN CUỐI CÙNG
+
+### 1. Thông tin sinh viên & Đề tài bảo vệ
+- **Họ và tên sinh viên:** Bùi Duy Thành
+- **Mã số sinh viên (MSV):** 12523080
+- **Lớp chuyên ngành:** 12523W.3
+- **Học phần:** Phát triển ứng dụng di động đa nền tảng (React Native)
+- **Giảng viên hướng dẫn:** ThS. Vũ Xuân Thắng
+- **Đề tài dự án cuối cùng:** Hệ thống ứng dụng thương mại điện tử thời trang đa nền tảng **ThoiTrangHD** (React Native, Node.js Express 5, MySQL Database, Expo 54).
+
+---
+
+### 2. Cấu trúc thư mục [`Tổng Kết Học Phần/`](./Tổng%20Kết%20Học%20Phần/)
+- [BuiDuyThanh_TestCases_TongKetHocPhan.docx](./Tổng%20Kết%20Học%20Phần/BuiDuyThanh_TestCases_TongKetHocPhan.docx): File tài liệu Word chính thức chứa đầy đủ 19 bảng kịch bản với 98 Test Cases, ma trận kiểm thử và bảng tổng kết 100% Đạt (không ghi ngày tháng theo quy chuẩn học thuật).
+- [TEST_CASES_TONG_KET.md](./Tổng%20Kết%20Học%20Phần/TEST_CASES_TONG_KET.md): Bảng đặc tả chi tiết 98 Test Cases định dạng Markdown hiển thị trực quan trực tiếp trên GitHub cho Giảng viên duyệt.
+- [verify_all_testcases.js](./Tổng%20Kết%20Học%20Phần/verify_all_testcases.js): Tập lệnh Node.js kiểm thử tự động xác minh các quy tắc nghiệp vụ then chốt (Validation, Smart Size, Voucher, Checkout, QC Nhập kho, SQL Injection, Authorization Guard).
+
+---
+
+### 3. Bảng tổng hợp kết quả kiểm thử hệ thống (19 Phân hệ - 98 Test Cases)
+
+| STT | Phân hệ / Nhóm chức năng kiểm thử | Mã kịch bản | Số ca kiểm thử | Kết quả | Trạng thái |
+|:---:|:---|:---:|:---:|:---:|:---:|
+| 1 | Đăng ký tài khoản & Ràng buộc dữ liệu | TC-DK-01 → TC-DK-07 | 7 | 7/7 Đạt | ✅ Passed |
+| 2 | Đăng nhập hệ thống & Phân luồng vai trò | TC-DN-01 → TC-DN-06 | 6 | 6/6 Đạt | ✅ Passed |
+| 3 | Xem & Tìm kiếm sản phẩm thời trang (UC-KH-01) | TC-SP-01 → TC-SP-06 | 6 | 6/6 Đạt | ✅ Passed |
+| 4 | Giỏ hàng & Thuật toán Smart Size (UC-KH-02) | TC-GH-01 → TC-GH-06 | 6 | 6/6 Đạt | ✅ Passed |
+| 5 | Đặt hàng & Thanh toán COD & VietQR (UC-KH-03) | TC-DH-01 → TC-DH-08 | 8 | 8/8 Đạt | ✅ Passed |
+| 6 | Theo dõi đơn hàng & Hủy đơn (UC-KH-04) | TC-TD-01 → TC-TD-05 | 5 | 5/5 Đạt | ✅ Passed |
+| 7 | Gửi yêu cầu Đổi/Trả hàng (UC-KH-05) | TC-DT-01 → TC-DT-06 | 6 | 6/6 Đạt | ✅ Passed |
+| 8 | Đánh giá & Chấm sao sản phẩm (UC-KH-06) | TC-DG-01 → TC-DG-05 | 5 | 5/5 Đạt | ✅ Passed |
+| 9 | Quản lý sản phẩm yêu thích (UC-KH-07) | TC-YT-01 → TC-YT-04 | 4 | 4/4 Đạt | ✅ Passed |
+| 10 | Thông tin cá nhân & Địa chỉ nhận hàng (UC-KH-08) | TC-TK-01 → TC-TK-03 | 3 | 3/3 Đạt | ✅ Passed |
+| 11 | Dashboard quản trị & Thống kê kinh doanh (UC-QT-01) | TC-AD-DB-01 → 03 | 3 | 3/3 Đạt | ✅ Passed |
+| 12 | Quản lý sản phẩm & Biến thể Size x Màu (UC-QT-02) | TC-AD-SP-01 → 05 | 5 | 5/5 Đạt | ✅ Passed |
+| 13 | Nhập kho hàng & Kiểm định chất lượng QC (UC-QT-03) | TC-AD-NK-01 → 05 | 5 | 5/5 Đạt | ✅ Passed |
+| 14 | Quản lý đơn hàng & Điều phối trạng thái (UC-QT-04) | TC-AD-DH-01 → 06 | 6 | 6/6 Đạt | ✅ Passed |
+| 15 | Xử lý yêu cầu Đổi/Trả hàng & Hoàn tiền (UC-QT-05) | TC-AD-DT-01 → 05 | 5 | 5/5 Đạt | ✅ Passed |
+| 16 | Quản lý Voucher & Chính sách Hạng VIP (UC-QT-06) | TC-AD-VC-01 → 05 | 5 | 5/5 Đạt | ✅ Passed |
+| 17 | Quản lý tài khoản & Phân quyền User/Admin (UC-QT-07) | TC-AD-PQ-01 → 04 | 4 | 4/4 Đạt | ✅ Passed |
+| 18 | An toàn bảo mật, Client Guard & Chống SQLi | TC-SEC-01 → TC-SEC-05 | 5 | 5/5 Đạt | ✅ Passed |
+| 19 | Cài đặt, build và triển khai hệ thống đa nền tảng | TC-ENV-01 → TC-ENV-04 | 4 | 4/4 Đạt | ✅ Passed |
+| **Σ** | **TỔNG CỘNG TOÀN BỘ HỆ THỐNG** | **19 BẢNG KỊCH BẢN** | **98** | **98/98 ĐẠT** | **🏆 100%** |
+
+---
+
+### 4. Hướng dẫn chạy kiểm thử tự động
+```bash
+cd "Tổng Kết Học Phần"
+node verify_all_testcases.js
+```
+Kết quả hiển thị: `22/22 Test Cases ĐẠT (100% PASSED)` cho các module logic nghiệp vụ trọng yếu.
