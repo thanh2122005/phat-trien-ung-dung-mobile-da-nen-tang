@@ -166,3 +166,4 @@ console.log('\n=================================================================
 console.log(`   KẾT QUẢ KIỂM THỬ: ${passedTests}/${totalTests} Test Cases ĐẠT (100% PASSED)`);
 console.log('   Tất cả các tiêu chí đánh giá dự án ThoiTrangHD đã được kiểm chứng an toàn.');
 console.log('================================================================================');
+
